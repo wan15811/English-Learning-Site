@@ -1,0 +1,10 @@
+ Volume in drive D is SSD
+ Volume Serial Number is 2CAA-EE43
+
+ Directory of D:\School_SSD\git\New
+
+03-Jan-21  05:58 AM    <DIR>          .
+03-Jan-21  05:58 AM    <DIR>          ..
+03-Jan-21  05:58 AM                 0 deleteme.txt
+               1 File(s)              0 bytes
+               2 Dir(s)  94,753,812,480 bytes free
