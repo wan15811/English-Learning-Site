@@ -1,0 +1,66 @@
+
+<div class="container-login100" style="background-image: url('../../../assets/img/bglogin_signup.jpg');">
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+<form class="login100-form validate-form"  #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+  <span class="login100-form-title p-b-37">
+    Sign Up
+  </span>
+
+  <div class="wrap-input100 validate-input m-b-20" >
+  <input class="input100" type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName" placeholder="Full Name"
+  required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+  <div *ngIf="signUpForm.submitted && !fullName.valid">
+    <label class="validation-message">This field is required.</label>
+  </div>
+  <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100 validate-input m-b-25" >
+  <input class="input100" type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+  required [pattern]="emailRule"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+  <div *ngIf="signUpForm.submitted && email.errors">
+    <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+  </div>
+  <span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input m-b-30" >
+  <input class="input100" type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+  minlength="8" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+  <div *ngIf="signUpForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
+  </div>
+  <span class="focus-input100"></span>
+  </div>
+  <br>
+  <div class="container-login100-form-btn">
+  <input class="login100-form-btn" type="submit" value="Sign Up">
+</div>
+<br>
+<div class="text-center">
+  <span class="txt1">
+    Do you have an account??
+  </span>
+
+    <a routerLink="/signin" class="txt2 hov1">
+      Login
+    </a>
+
+</div>
+<!-- Success message -->
+<div class="success" *ngIf="showSucessMessage">
+  SignUp successfully
+</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+</form>
+</div>
+</div>
+
+
