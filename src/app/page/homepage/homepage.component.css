@@ -1,0 +1,23 @@
+.view {
+  background: url("../../../assets/img/backgroundabc.jpg")no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.navbar {
+  color: #4285F4;
+  background-color:transparent;
+}
+
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+.u-profile{
+  color: white;
+  margin-top: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #4285F4;
+  }
+}
