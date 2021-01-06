@@ -475,12 +475,12 @@ input[type=text].invalid-textbox,input[type=password].invalid-textbox{
 
   label.validation-message{
     color:#ed5558;
-
+    padding: 10px;
 
 
   font-family: SourceSansPro-Bold;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 0.5;
   }
 
   .alert {

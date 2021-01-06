@@ -30,7 +30,7 @@
   minlength="8" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
   <div *ngIf="signUpForm.submitted && password.errors">
     <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
-    <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">Enter at least 8 characters.</label>
   </div>
   <span class="focus-input100"></span>
   </div>
