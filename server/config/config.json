@@ -6,7 +6,7 @@
         "JWT_EXP": "60m"
     },
     "production":{
-        "PORT": "process.env.PORT",
+        "PORT": "80",
         "MONGODB_URI": "mongodb://xxxx/DB_name",
         "JWT_SECRET": "SECRET#123",
         "JWT_EXP": "2m"
