@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <div class="sidebar-brand-icon">
+        </div>
+        <div class="sidebar-brand-text mx-3">LEARNING ENGLISH</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Vocabulary</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Features
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/viewgrammar" data-toggle="collapse" data-target="#collapseBootstrap"
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fas fa-fw fa-book"></i>
+          <span>Grammar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/viewvocab" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fas fa-fw fa-book"></i>
+          <span>Vocabulary</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-book"></i>
+          <span>Test</span>
+        </a>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="../../../assets/img/blank-profile-picture.png" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Vocabulary</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Vocabulary</a></li>
+              <li class="breadcrumb-item active" aria-current="page"></li>
+            </ol>
+          </div>
+
+          <div class="row mb-3">
+             <!-- List -->
+             <div class="col-xl-4 col-lg-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">LIST VOCABULARY LESSON</h6>
+
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="medium text-gray-500" *ngFor="let list of lists">
+                      <div class="small float-left">
+                        <a class="action-btn" href="javascript:void(0);" data-toggle="modal" data-target="#UpdateModal">
+                          <i class="material-icons" >edit</i>
+                        </a>
+                        <a  class="action-btn" >
+                          <i class="material-icons" (click)="deleteVocabCate(cate_id)">delete</i>
+                        </a>
+                      </div>
+                      <a class="d-flex justify-content-between align-items-center" routerLinkActive="is-active" [routerLink]="['/viewvocab/vocabpage',list._id]">{{list.vocabCate}}</a>
+                      <br>
+
+                    </div>
+
+                  </div>
+                  <div class="card-footer text-center">
+                    <a class="m-0 small text-primary card-link" href="javascript:void(0);" data-toggle="modal" data-target="#AddnewModal">+ Add new list</a>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- content -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">CONTENT</h6>
+                  <a class="m-0 float-right btn btn-primary btn-sm" routerLink="./newvocab" data-toggle="modal" >+Add Vocabulary</a>
+                </div>
+                <div class="card-body">
+                  <!-- <h4>content</h4> -->
+                  <table class="table" >
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Vocabulary</th>
+                        <th scope="col">Decs</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr *ngFor="let lesson of lesson">
+                        <td>
+                          <a class="action-btn"  >
+                            <i class="material-icons" >edit</i>
+                          </a>
+                          <a class="action-btn" (click)="deleteVocabLesson(lesson.cate_id,lesson._id)">
+                            <i class="material-icons">delete</i>
+                          </a>
+                        </td>
+                        <td><img src="http://localhost:8080/upload/{{lesson.vocabImg}}" class="card-img-top img-responsive photo" ></td>
+                        <td>{{lesson.vocabWord}}</td>
+                        <td>{{lesson.vocabDescription}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal Addnew -->
+          <div class="modal fade" id="AddnewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelAddnew"
+            aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelAddnew">Add new vocabulary lesson</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Enter the title of lesson that you want to add.</p>
+                  <input #CateTitleInput type="text" class="form-control" placeholder="Enter lesson..." aria-label="GrammarLesson" aria-describedby="basic-addon1">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal" >Cancel</button>
+                  <a class="btn btn-primary" (click)="createVocabCate(CateTitleInput.value)">Create</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal Update cate -->
+          <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelUpdate"
+            aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelUpdate">Update vocabulary lesson</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Enter the title of lesson that you want to update.</p>
+                  <input #CateTitleUpdate type="text" class="form-control" placeholder="Enter lesson..." aria-label="GrammarLesson" aria-describedby="basic-addon1">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal" >Cancel</button>
+                  <a class="btn btn-primary" (click)="updateVocabCate(CateTitleUpdate.value)">Update</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+</div>
+  </div>
+</body>
+</html>

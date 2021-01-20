@@ -3,15 +3,28 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <style>
+            input{
+                display: block;
+                clear: both;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
-        <form action="" method="POST">
-            <input type="text" name="vocabTitle">
-            <input type="text" name="vocabTopic">
-            <input type="text" name="vocabContent">
-            <input type="text" name="vocabEx">
-            <input type="submit" value="Add Vocabulary">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <select name="selectCate">
+                <% Cates.forEach(function(cate){ %>
+                    <option value="<%- cate._id %>">
+                        <%- cate.vocabCate %>
+                    </option>
+                <% }); %>
+            </select>
+            <input type="text" name="vocabWord" placeholder="Word">
+            <input type="file" name="vocabImg">
+            <input type="text" name="vocabDescription">
+            <input type="submit" value="Add Vocabulary" name="btnAdd">
         </form>
     </body>
 </html>

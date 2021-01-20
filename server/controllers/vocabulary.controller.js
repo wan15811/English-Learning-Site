@@ -1,87 +1,106 @@
 const { render } = require('ejs');
-const express = require('express');
+const { Router } = require('express');
+const express = require('express'); 
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify',false);
 mongoose.set('useCreateIndex', true);
-var ObjectId = require('mongoose').Types.ObjectId;
-
-const  Vocab  = require('../models/vocabulary.model');
-// const Vocab = mongoose.model('Vocabulary');
 var router = express.Router();
 
-router.get("/", function(req,res){
-    //res.render("vocabulary");
-    Vocab.find((err,docs) => {
-        if(!err){res.send(docs);}
-        else { console.log('Error in Retriving Lesson :' + JSON.stringify(err, undefined, 2)); }
-    })
-});
-router.get('/:id', (req, res) => {
-    // if (!ObjectId.isValid(req.params.id))
-    //     return res.status(400).send(`No record with given id : ${req.params.id}`);
+//call model
+const  Vocab  = require('../models/vocabulary.model');
+const VocabCate = require('../models/vocabcate.model');
+// config multer
+var multer  = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/upload')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now()  + "-" + file.originalname)
+    }
+});  
+var upload = multer({ 
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        console.log(file);
+        if( file.mimetype=="image/bmp" || 
+            file.mimetype=="image/png" ||
+            file.mimetype=="image/jpg" ||
+            file.mimetype=="image/gif" ||
+            file.mimetype=="image/jpeg"){
+            cb(null, true)
+        }else{
+            return cb(new Error('Only image are allowed!'))
+        }
+    }
+}).single("vocabImg");
 
-    // newVocab.findById(req.params.id, (err, doc) => {
-    //     if (!err) { res.send(doc); }
-    //     else { console.log('Error in Retriving Lesson :' + JSON.stringify(err, undefined, 2)); }
-    // });
+
+router.get('/', (req, res) => {
+    VocabCate.find(function(err, items){
+        if(err){
+            res.send("Error");
+        }else{
+            console.log(items);
+            res.render("vocabulary", {Cates: items});
+        }
+    });
+    
+});
+
+router.get('/:id', (req, res) => {
     Vocab.findById(req.params.id, function (err, vocab) {
         if (err) return res.send(err);
         res.json(vocab);
       });
 });
-router.post("/", function(req,res) {
-    var newVocab = new Vocab({
-        vocabTitle: req.body.vocabTitle,
-        vocabTopic: req.body.vocabTopic,
-        vocabContent: req.body.vocabContent,
-        vocabEx: req.body.vocabEx
-    });
-    newVocab.save((err,doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Lesson Save :' + JSON.stringify(err, undefined, 2)); }
-    });
-});
 
-router.put('/:id',(req,res) => {
-    // if(!ObjectId.isValid(req.params.id))
-    // return res.status(400).send(`No record with given id : ${req.params.id}`);
+//create vocabulary theo cate
+router.post('/', (req, res) => {
+    //upload file
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+          console.log("A Multer error occurred when uploading."); 
+          res.json({kq: 0, "err": err});
+        } else if (err) {
+          console.log("An unknown error occurred when uploading." + err);
+          res.json({kq: 0, "err": err});
+        }else{
+            console.log("Upload is okay");
+            console.log(req.file); // Thông tin file đã upload
+            //save vocabulary
+            var vocab = new Vocab({
+                vocabWord: req.body.vocabWord,
+                vocabImg: req.file.filename, 
+                vocabDescription: req.body.vocabDescription
+            });
+            vocab.save(function(err){
+                if(err){ res.json({kq: 0, "error": err}); }
+               else { 
+                   // update vocab_id
+                    Vocab.findOneAndUpdate(
+                        {_id: vocab._id},
+                        { $push: 
+                            {
+                                cate_id: req.body.selectCate
+                            }
+                        },
+                         function(err){
+                            if(err){
+                                res.json({kq: 0, "error" : err});
+                            }else{
+                                res.json({kq: 1});
+                            }
+                    }); 
+                    
+                }
+            });
+        }
 
-    // var newVocab = {
-    //     vocabTitle: req.body.vocabTitle,
-    //     vocabTopic: req.body.vocabTopic,
-    //     vocabContent: req.body.vocabContent,
-    //     vocabEx: req.body.vocabEx
-    // };
-    // Vocab.findByIdAndUpdate(req.params.id, {$set: newVocab},{ new: true }, (err, doc) =>{
-    //     if (!err) { res.send(doc); }
-    //     else { console.log('Error in Lesson Update :' + JSON.stringify(err, undefined, 2)); }
-    // });
-    Vocab.findById(req.params.id, function(err, vocab) {
-
-		if (err) return res.send(err);
-
-		//set the new user information if it exists in the request
-		if(req.body.vocabTitle) vocab.vocabTitle = req.body.vocabTitle;
-		if(req.body.vocabTopic) vocab.vocabTopic = req.body.vocabTopic;
-		if(req.body.vocabContent) vocab.vocabContent = req.body.vocabContent;
-        if(req.body.vocabEx) vocab.vocabEx = req.body.vocabEx;
-		//save the user
-		vocab.save(function(err) {
-			if(err) return res.send(err);
-
-			//return a message
-			res.json({ message: 'Lesson updated!' });
-		});
-	});
-});
-router.delete('/:id', (req, res) => {
-    if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send(`No record with given id : ${req.params.id}`);
-
-    Vocab.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) { res.send(doc); }
-        else { console.log('Error in Lesson Delete :' + JSON.stringify(err, undefined, 2)); }
     });
 });
+
+
+
 
 module.exports = router;
