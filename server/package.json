@@ -5,6 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+	"client": "cd ../client && ng s",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon app.js\" \"npm run client\" ",
     "start": "node app.js"
   },
   "author": "",
