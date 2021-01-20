@@ -95,7 +95,7 @@ export class SignInComponent implements OnInit {
   //   this.router.navigateByUrl('/homepage');
   // }
   movetoregister(){
-    this.router.navigateByUrl('/signup', {relativeTo: this._avtivatedRoute});
+    this.router.navigateByUrl('/signup', /* Removed unsupported properties by Angular migration: relativeTo. */ {});
   }
   fbLibrary() {
 

@@ -82,7 +82,7 @@ import { AboutusComponent } from './page/aboutus/aboutus.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     MatToolbarModule,
