@@ -7,7 +7,7 @@
     },
     "production":{
         "PORT": "process.env.PORT",
-        "MONGODB_URI": "mongodb://xxxx/DB_name",
+        "MONGODB_URI": "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.27o27.mongodb.net/Engweb?retryWrites=true&w=majority",
         "JWT_SECRET": "SECRET#123",
         "JWT_EXP": "2m"
     }
