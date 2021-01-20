@@ -6,6 +6,7 @@
   "dependencies": {
     "@angular-devkit/build-angular": "^0.1100.7",
     "@angular/cli": "^11.0.7",
+    "@angular/core": "^11.0.9",
     "angular-bootstrap-md": "^10.1.1",
     "angularx-social-login": "^3.5.4",
     "animate.css": "^4.1.1",
