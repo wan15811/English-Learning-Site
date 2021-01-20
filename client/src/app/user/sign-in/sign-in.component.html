@@ -9,21 +9,16 @@
   <div class="wrap-input100 validate-input m-b-20" >
   <input class="input100" type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRule" required
     [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
-  <!-- <div *ngIf="signInForm.submitted && email.errors?.pattern" data-validate="Enter email"> -->
-  <div *ngIf="signInForm.submitted && email.errors" data-validate="Enter email">
-    <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
-    <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
-    <!-- <label class="validation-message">Invalid email address.</label> -->
+  <div *ngIf="signInForm.submitted && email.errors?.pattern" data-validate="Enter email">
+    <label class="validation-message">Invalid email address.</label>
   </div>
   <span class="focus-input100"></span>
  </div>
  <div class="wrap-input100 validate-input m-b-25" >
   <input class="input100" type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="8"
     [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
-  <div *ngIf="signInForm.submitted && password.errors">
-    <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
-    <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
-    <!-- <label class="validation-message">Minimum 8 characters.</label> -->
+  <div *ngIf="signInForm.submitted && password.errors?.minlength">
+    <label class="validation-message">Minimum 8 characters.</label>
   </div>
   <span class="focus-input100"></span>
 </div>

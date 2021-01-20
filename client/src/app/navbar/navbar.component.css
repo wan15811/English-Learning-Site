@@ -1,0 +1,27 @@
+.u-profile{
+  color: white;
+  margin-top: 10px;
+}
+/* .intro-header {
+  height: unset !important;
+}
+.top-nav-collapse {
+  background-color: #78909c !important;
+}
+.view {
+  height: 100vh !important;
+}
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #78909c !important;
+  }
+} */
+.social-part .fa{
+  padding-right:20px;
+}
+ul li a{
+  margin-right: 20px;
+}

@@ -65,7 +65,7 @@ export class SignInComponent implements OnInit {
       .subscribe(
         _data => {
           this.loginSocialUser(reqObject, true);
-          this.router.navigateByUrl('/homepage');
+
         },
         error => {
           if(error.status === 422){

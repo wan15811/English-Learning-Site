@@ -1,114 +1,135 @@
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
   <app-navbar></app-navbar>
-  <app-head></app-head>
-
-<!--Main Navigation
-<!--Main Layout-->
-<main class="text-center py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-4">
-              <!--Card-->
-              <mdb-card cascade="true" narrower="true" >
-                <!--Card image-->
-                <div class=" view-cascade overlay waves-light" mdbWavesEffect>
-                  <mdb-card-img src="https://halosmart.edu.vn/wp-content/uploads/2019/11/Hoc-Tu-Vung.jpg" ></mdb-card-img>
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-                <!--/Card image-->
-                <mdb-card-body cascade="true" class="text-center">
-                  <!--Card content-->
-                  <h5 class="pink-text">
-                    <mdb-icon fas icon="book-open"></mdb-icon> Lesson</h5>
-                  <!--Title-->
-                  <h4 class="card-title">English Vocabulary</h4>
-                  <!--Text-->
-                  <mdb-card-text>
-
-                  </mdb-card-text>
-                  <a mdbBtn color="unique" class="waves-light" mdbWavesEffect>Take Lesson</a>
-                </mdb-card-body>
-                <!--/.Card content-->
-              </mdb-card>
-              <!--/.Card-->
-            </div>
-            <div class="col-md-4">
-              <!--Card-->
-              <mdb-card cascade="true" narrower="true">
-                <!--Card image-->
-                <div class=" view-cascade overlay waves-light" mdbWavesEffect>
-                  <mdb-card-img src="https://simpleenglish.com.vn/wp-content/uploads/2018/07/grammar-640x366.jpg"></mdb-card-img>
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-                <!--/Card image-->
-                <mdb-card-body cascade="true" class="text-center">
-                  <!--Card content-->
-                  <h5 class="pink-text">
-                    <mdb-icon fas icon="book-reader"></mdb-icon> Lesson</h5>
-                  <!--Title-->
-                  <h4 class="card-title">English Grammar</h4>
-                  <!--Text-->
-                  <mdb-card-text>
-
-                  </mdb-card-text>
-                  <a mdbBtn color="unique" class="waves-light" mdbWavesEffect routerLink="/listgrammar">Take Lesson</a>
-                </mdb-card-body>
-                <!--/.Card content-->
-              </mdb-card>
-              <!--/.Card-->
-            </div>
-            <div class="col-md-4">
-              <!--Card-->
-              <mdb-card cascade="true" narrower="true">
-                <!--Card image-->
-                <div class=" view-cascade overlay waves-light" mdbWavesEffect>
-                  <mdb-card-img src="https://benhlytramcam.vn/wp-content/uploads/2018/08/1-14.jpg"></mdb-card-img>
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-                <!--/Card image-->
-                <mdb-card-body cascade="true" class="text-center">
-                  <!--Card content-->
-                  <h5 class="pink-text">
-                    <mdb-icon fas icon="star"></mdb-icon> </h5>
-                  <!--Title-->
-                  <h4 class="card-title">English Tests</h4>
-                  <!--Text-->
-                  <mdb-card-text>
-
-                  </mdb-card-text>
-                  <a mdbBtn color="unique" class="waves-light" mdbWavesEffect>Start</a>
-                </mdb-card-body>
-                <!--/.Card content-->
-              </mdb-card>
-              <!--/.Card-->
-            </div>
-
-          </div>
-
+  <body>
+    <div class="text-center">
+      <div class="text-container">
+        <h1>VQ<br><br><span>English</span></h1>
+        <div class="animated-text">
+          <h2>Remember!</h2>
+          <h2>Improve!</h2>
+          <h2>Learning!</h2>
+          <h2>Grammar!</h2>
+          <h2>Vocabulary!</h2>
+          <h2>Test!</h2>
+        </div>
+      </div>
+      <div class="animation-container">
+        <div class="burst">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="night">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <script type="text/javascript">
+      function createBurst(){
+        let animContainer = document.querySelector('.animation-container');
+        let burst = document.querySelector('.burst');
 
-</main>
-<!--Main Layout-->
-<!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
+        burst.style.top = Math.random() * 550 + 'px';
+        burst.style.left = Math.random() * 750 + 'px';
 
-  <!-- Footer Elements -->
+        let burstClone = burst.cloneNode(true);
+        animContainer.appendChild(burstClone);
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 PSE:
-    <a href=""> TuongVy_MinhQuang</a>
-  </div>
-  <!-- Copyright -->
+        setTimeout(() => {
+          burstClone.remove();
+        }, 20000);
+      }
+      setInterval(createBurst, 2000);
+      </script>
+  </body>
+  <main class="text-center py-5">
+    <div class="container">
+      <div id="card1" class="row">
+        <!--image card start-->
+        <div class="image">
+          <img src="https://simpleenglish.com.vn/wp-content/uploads/2018/07/grammar-640x366.jpg" alt="">
+          <div class="details">
+            <h2>Enslish <span>Grammar</span></h2>
+            <p>Your guide to English grammar. (Illustrated)</p>
+            <div class="more">
+              <a routerLink="/grammar" class="read-more">Take <span>Lesson</span></a>
+              <div class="icon-links">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+          <mdb-carousel-item>
+            <label class="element-animation1">Grammar is the mortar that holds the bricks of vocabulary together. Without good mortar bricks can come tumbling down and that can cause embarrassing misunderstandings. There is a common impression that learning English grammar is painful, but it is a lot easier than many other languages. Of course, English is more than just memorizing grammar rules, the grammar must be incorporated into your everyday use of the language. Theory and practice should always go hand in hand. Grammar matters.</label>
+          </mdb-carousel-item>
+        </mdb-carousel>
+      </div>
+      </div>
+      <div id="card2" class="row">
+        <!--image card start-->
+        <div class="image">
+          <img src="https://halosmart.edu.vn/wp-content/uploads/2019/11/Hoc-Tu-Vung.jpg" alt="">
+          <div class="details">
+            <h2>English <span>Vocabulary</span></h2>
+            <p>Learn English vocabulary by topic. (Illustrated)</p>
+            <div class="more">
+              <a routerLink="/vocabcate" class="read-more">Take <span>Lesson</span></a>
+              <div class="icon-links">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+            <mdb-carousel-item>
+              <label class="element-animation2">Vocabulary simply means words, and English vocabulary means lots and lots of words.
 
-</footer>
-<!-- Footer -->
+                Just think of English vocabulary as the bricks of the language, and to help you build up your vocabulary we have organised these pages using a thematic approach and used lots and lots of pictures and sounds to go with the words.</label>
+            </mdb-carousel-item>
+          </mdb-carousel>
+        </div>
+      </div>
+      <div id="card3" class="row">
+        <!--image card start-->
+        <div class="image">
+          <img src="https://benhlytramcam.vn/wp-content/uploads/2018/08/1-14.jpg" alt="">
+          <div class="details">
+            <h2>English <span>Test</span></h2>
+            <p>Have you really learnt what you think you have learnt?</p>
+            <div class="more">
+              <a routerLink="/test" class="read-more">Start <span>Test</span></a>
+              <div class="icon-links">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+            <mdb-carousel-item>
+              <label class="element-animation3">Here you will find English tests online to test your listening, memory, vocabulary, reading and comprehension, spelling and grammar skills.
+
+                Some of the tests will open up in a new browser window, when you have finished the game just close the window.</label>
+            </mdb-carousel-item>
+          </mdb-carousel>
+        </div>
+      </div>
+    </div>
+
+  </main>
+    <!--Main Layout-->
+<app-foot></app-foot>
+</html>

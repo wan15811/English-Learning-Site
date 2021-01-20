@@ -1,124 +1,41 @@
 <app-navbar></app-navbar>
-
 <app-head></app-head>
-<!--Main Layout-->
-<div><h1>ENGLISH GRAMMAR</h1></div>
-<main class="text-center py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-3">
+        <br>
+        <ul class="list-group" *ngFor="let cate of cates" >
+          <a [routerLink]="['/grammar',cate._id]" class="list-group-item d-flex justify-content-between align-items-center" routerLinkActive="is-active">
+            {{cate.title}}
+          </a>
 
-          <div class="row">
-            <div class="col-md-12 ">
-              <h3>Abjectives</h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 ">
-              <h4>ABJECTIVES ORDER</h4>
-            </div>
-          </div>
-          <div class="row">
-            <p>Adjectives can be used to describe lots of things, from physical size, age, shape, colour, material, to more abstract things like opinion, origin and purpose.</p>
-          </div>
-          <div class="row">
-            <p>We can use adjectives together to give a detailed description of something.</p>
-          </div>
-          <div class="row">
-            <p>Adjectives that express opinions usually come before all others, but it can sometimes depend on what exactly you want to emphasise.</p>
-          </div>
-          <div class="row">
-            <p><b>For Example:</b></p>
-          </div>
-          <div class="row">
-            <p>"That's a nice, big, blue bag." (You like the bag.)</p>
-          </div>
-          <div class="row">
-            <p>"That's a nice blue." (You like the colour.)</p>
-          </div>
-          <div class="row">
-            <p>When we group adjectives together there is a general (sometimes flexible) rule for the position of each type of adjective, these are:</p>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Position</th>
-                <th scope="col">1st*</th>
-                <th scope="col">2nd*</th>
-                <th scope="col">3rd</th>
-                <th scope="col">4th</th>
-                <th scope="col">5th</th>
-                <th scope="col">6th</th>
-                <th scope="col">7th</th>
-                <th scope="col">8th</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td>Opinion</td>
-                <td>Size</td>
-                <td>Age</td>
-                <td>Shape</td>
-                <td>Colour</td>
-                <td>Material</td>
-                <td>Origin</td>
-                <td>Purpose</td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td>Nice</td>
-                <td>Small</td>
-                <td>Old</td>
-                <td>Square</td>
-                <td>Black</td>
-                <td>Plastic</td>
-                <td>British</td>
-                <td>Racing</td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td>Ugly</td>
-                <td>Big</td>
-                <td>New</td>
-                <td>Circular</td>
-                <td>Blue</td>
-                <td>Cotton</td>
-                <td>America</td>
-                <td>Running</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <p>You might swap adjectives that express an opinion and an adjective based on fact depending on what you wish to emphasise:</p>
-          </div>
-          <div class="row">
-            <p><b>For Example:</b></p>
-            <ul>
-              <li><p>"She had a long, ugly nose." emphasising the length of her nose.</p></li>
-              <li><p>"He was a silly, little man." emphasising that the man was silly.</p></li>
-            </ul>
-          </div>
-          <div class="row">
-            <p>This is just for fun as you wouldn't normally see so many adjectives in one description.</p>
-          </div>
-          <div class="row">
-            <p><b>For Example:</b></p>
-            <ul>
-              <li><p>"She had a big, ugly, old, baggy, blue, stripey, cotton, British, knitting bag."</p></li>
-            </ul>
-          </div>
-          <div class="row">
-            <a routerLink="/listAbjectives" class="text-blue">List of Common Abjectives</a>
-          </div>
-
-
-
+        </ul>
       </div>
+        <div class="col-lg-9" id="example" >
+          <div class="container" *ngFor="let lesson of lessons">
+            <div class="row">
+              <div class="col-md-12">
+
+                  <div class="row">
+                    <div class="col-md-12 ">
+                      <h1>{{lesson.name}}</h1>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <p>{{lesson.content}}</p>
+                    <br>
+                  </div>
+                  <div class="row">
+                    <p><b>For Example:</b></p>
+                  </div>
+                  <div class="row">
+                    <p>{{lesson.example}}</p>
+                  </div>
+                  <p>-------------------------------------------------------------------------------------------------------------</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
     </div>
   </div>
-
-</main>
-<!--Main Layout-->
-
-<app-foot></app-foot>

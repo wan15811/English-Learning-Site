@@ -38,13 +38,20 @@ import { HeadComponent } from './head/head.component';
 import { FootComponent } from './foot/foot.component';
 import { from } from 'rxjs';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { ListAbjComponent } from './lesson/grammar/list-abj/list-abj.component';
-import { ListgrammarComponent } from './lesson/grammar/listgrammar/listgrammar.component';
-import { EnglishgrammarComponent } from './lesson/grammar/englishgrammar/englishgrammar.component';
 //social login
 import {SocialAuthServiceConfig} from 'angularx-social-login';
 import {SocialLoginModule, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+import { VocabcateComponent } from './lesson/vocabcate/vocabcate.component';
+import { TestComponent } from './test/test.component';
+import { ViewGrammarComponent } from './admin/view-grammar/view-grammar.component';
+import { ViewVocabComponent } from './admin/view-vocab/view-vocab.component';
+import { NewgrammarComponent } from './admin/newgrammar/newgrammar.component';
+import { UpdateGrammarComponent } from './admin/update-grammar/update-grammar.component';
+import { NewvocabComponent } from './admin/newvocab/newvocab.component';
+import { LoginComponent } from './admin/login/login.component';
+import { SignupComponent } from './admin/signup/signup.component';
+import { AboutusComponent } from './page/aboutus/aboutus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,10 +65,17 @@ import {SocialLoginModule, GoogleLoginProvider, FacebookLoginProvider} from 'ang
     HeadComponent,
     FootComponent,
     NavbarComponent,
-    SidenavComponent,
     ListAbjComponent,
-    ListgrammarComponent,
-    EnglishgrammarComponent
+    VocabcateComponent,
+    TestComponent,
+    ViewGrammarComponent,
+    ViewVocabComponent,
+    NewgrammarComponent,
+    UpdateGrammarComponent,
+    NewvocabComponent,
+    LoginComponent,
+    SignupComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
