@@ -4,6 +4,7 @@
   "description": "To start, in terminal window, navigate to client folder then type\r ```\r npm install\r ```\r After the program finish installing, type\r ```\r ng serve\r ```\r Then navigate to Client folder, type\r ```\r npm start\r ```\r After following those steps, open your browser and go to localhost:4200 to visit the website.",
   "main": "index.js",
   "dependencies": {
+    "@angular-devkit/build-angular": "^0.1100.7",
     "@angular/cli": "^11.0.7",
     "angular-bootstrap-md": "^10.1.1",
     "angularx-social-login": "^3.5.4",
