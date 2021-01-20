@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@angular-devkit/build-angular": "^0.1100.7",
-    "@angular/cli",
+    "@angular/cli": "^11.0.7",
     "angular-bootstrap-md": "^10.1.1",
     "angularx-social-login": "^3.5.4",
     "animate.css": "^4.1.1",
@@ -23,7 +23,7 @@
     "select2": "^4.0.13"
   },
   "devDependencies": {
-    
+    "@angular/compiler-cli": "^11.0.9"
   },
   "scripts": {
     "heroku-postbuild": "cd ./client && npm install",
