@@ -713,4 +713,6 @@ body{
 }
 label{
   font-family: SourceSansPro-Regular, sans-serif;
+  margin-left: 350px;
+  margin-right: 350px;
 }

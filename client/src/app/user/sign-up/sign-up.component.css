@@ -475,6 +475,7 @@ input[type=text].invalid-textbox,input[type=password].invalid-textbox{
 
   label.validation-message{
     color:#ed5558;
+    padding: 5px;
 
 
 

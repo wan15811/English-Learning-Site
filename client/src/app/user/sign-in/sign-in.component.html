@@ -1,72 +1,84 @@
-
 <div class="container-login100" style="background-image: url('../../../assets/img/bglogin_signup.jpg');">
 
-<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30" *ngIf="!user">
-<form class="login100-form validate-form" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
-  <span class="login100-form-title p-b-37">
-    Log In
-  </span>
-  <div class="wrap-input100 validate-input m-b-20" >
-  <input class="input100" type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRule" required
-    [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
-  <div *ngIf="signInForm.submitted && email.errors?.pattern" data-validate="Enter email">
-    <label class="validation-message">Invalid email address.</label>
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30" *ngIf="!user">
+  <form class="login100-form validate-form" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+    <span class="login100-form-title p-b-37">
+      Log In
+    </span>
+    <div class="wrap-input100 validate-input m-b-20" >
+      <input class="input100" type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRule" required
+        [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+        <!-- them error message -->
+      <!-- <div *ngIf="signInForm.submitted && email.errors?.pattern" data-validate="Enter email"> -->
+      <div *ngIf="signInForm.submitted && email.errors" data-validate="Enter email">
+        <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+        <!-- <label class="validation-message">Invalid email address.</label> -->
+      </div>
+    <span class="focus-input100"></span>
+   </div>
+   <div class="wrap-input100 validate-input m-b-25" >
+    <input class="input100" type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="8"
+      [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+      <!-- them error message -->
+      <div *ngIf="signInForm.submitted && password.errors">
+        <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
+        <!-- <label class="validation-message">Minimum 8 characters.</label> -->
+      </div>
+    <span class="focus-input100"></span>
   </div>
-  <span class="focus-input100"></span>
- </div>
- <div class="wrap-input100 validate-input m-b-25" >
-  <input class="input100" type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="8"
-    [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
-  <div *ngIf="signInForm.submitted && password.errors?.minlength">
-    <label class="validation-message">Minimum 8 characters.</label>
+  <br>
+    <div class="container-login100-form-btn">
+    <input class="login100-form-btn" type="submit" value="Sign In">
   </div>
-  <span class="focus-input100"></span>
-</div>
-<br>
-  <div class="container-login100-form-btn">
-  <input class="login100-form-btn" type="submit" value="Sign In">
-</div>
-<br>
-<div class="text-center p-t-57 p-b-20">
-  <span class="txt1">
-    Or login with
-  </span>
-</div>
-<div class="flex-c p-b-112">
-  <a  class="login100-social-item" (click)="socialSignIn('facebook')">
-    <img src="../../../assets/img/iconfinder_Facebook_571122.png" alt="FACEBOOK">
-  </a>
+  <br>
+  <div class="text-center p-t-57 p-b-20">
+    <span class="txt1">
+      Or login with
+    </span>
+  </div>
+  <div class="flex-c p-b-112">
+    <a  class="login100-social-item" (click)="socialSignIn('facebook')">
+      <img src="../../../assets/img/iconfinder_Facebook_571122.png" alt="FACEBOOK">
+    </a>
 
-  <a class="login100-social-item" (click)="socialSignIn('google')">
-    <img src="../../../assets/img/icon-google.png" alt="GOOGLE">
-  </a>
-</div>
-<!-- Error message -->
-<div class="alert" *ngIf="serverErrorMessages">
-  {{serverErrorMessages}}
-</div>
-<br>
-<div class="text-center">
-  <a routerLink="/signup" class="txt2 hov1">
-    Sign Up
-  </a>
-</div>
-</form>
-</div>
+    <a class="login100-social-item" (click)="socialSignIn('google')">
+      <img src="../../../assets/img/icon-google.png" alt="GOOGLE">
+    </a>
+  </div>
+  <!-- Error message -->
+  <div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+  </div>
+  <br>
+  <div class="text-center">
+    <a routerLink="/signup" class="txt2 hov1">
+      Sign Up
+    </a>
+  </div>
+  <br>
+  <div class="text-center">
+    <a routerLink="/loginadmin" class="txt2 hov1">
+      Login With Admin
+    </a>
+  </div>
+  </form>
+  </div>
 
-<div *ngIf="user" class="card text-center">
-  <h6 class="card-header">Welcome</h6>
-  <div class="card-block"></div>
-  <img src="{{user.photoUrl}}" class="card-img-top img-responsive photo">
-  <div class="card-block">
-    <h4 class="card-title">{{user.name}}</h4>
-    <p class="card-text">{{user.email}}</p>
+  <div *ngIf="user" class="card text-center">
+    <h6 class="card-header">Welcome</h6>
+    <div class="card-block"></div>
+    <img src="{{user.photoUrl}}" class="card-img-top img-responsive photo">
+    <div class="card-block">
+      <h4 class="card-title">{{user.name}}</h4>
+      <p class="card-text">{{user.email}}</p>
+    </div>
+    <div class="card-block">
+      <input class="login100-form-btn" type="button" routerLink="/homepage" value="Home">
+    </div>
   </div>
-  <div class="card-block">
-    <input class="login100-form-btn" type="button" routerLink="/homepage" value="Home">
   </div>
-</div>
-</div>
 
 
 
