@@ -47,7 +47,7 @@
     "heroku"
   ],
   "engines": {
-    "node": "14.15.3"
+    
   },
   "author": "Tuong Vy",
   "license": "ISC",
