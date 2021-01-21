@@ -22,7 +22,7 @@ var app =  express();
 //use body parser for grabbing information from POST requests
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:4200'}));
+app.use(cors({ origin: 'https://0.0.0.0:4200'}));
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
 app.set("view engine","ejs");
