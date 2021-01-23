@@ -3,6 +3,7 @@ import { UserService } from '../shared/user.service';
 import { Router } from "@angular/router";
 import { SocialAuthService } from "angularx-social-login";
 import { SocialUser, GoogleLoginProvider } from "angularx-social-login";
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,6 +11,9 @@ import { SocialUser, GoogleLoginProvider } from "angularx-social-login";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
+  public unsubscribe$ = new SubSink;
+
   userDetails: any;
   user: SocialUser;
   constructor(private userService: UserService, private router: Router, private authService: SocialAuthService) { }
@@ -38,5 +42,6 @@ export class UserProfileComponent implements OnInit {
   onLogout(){
     this.userService.deleteToken();
     this.router.navigate(['/signin']);
+    this.unsubscribe$.unsubscribe();
   }
 }

@@ -5,12 +5,17 @@ import { UserService } from 'src/app/shared/user.service';
 import {AuthenticationService} from '../../../../src/app/auth/authentication.service'
 import { FacebookLoginProvider, SocialAuthService } from "angularx-social-login";
 import { SocialUser, GoogleLoginProvider } from "angularx-social-login";
+import { takeUntil } from 'rxjs/operators';
+import { pipe, Subject } from 'rxjs';
+import { SubSink } from 'subsink';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+
+  public unsubscribe$ = new SubSink;
 
   user : SocialUser;
   constructor(private userService: UserService,
@@ -26,7 +31,8 @@ export class SignInComponent implements OnInit {
   emailRule = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
   ngOnInit(){
-    this.authService.authState.subscribe((user) =>{
+    this.authService.authState
+    .subscribe((user) =>{
       this.user = user;
     })
     if(this.userService.isLoggedIn()) //page sẽ xhien sau khi login
@@ -35,7 +41,8 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form : NgForm){
-    this.userService.signin(form.value).subscribe(
+    this.userService.signin(form.value)
+    .subscribe(
       res => {
         this.userService.setToken(res['token']);
         this.router.navigateByUrl('/homepage');
@@ -45,8 +52,10 @@ export class SignInComponent implements OnInit {
       }
     );
   }
+  
   //login using social account
   public socialSignIn(socialProvider){
+    
     let socialPlatformProvider;
     if (socialProvider === 'facebook'){
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
@@ -117,6 +126,11 @@ export class SignInComponent implements OnInit {
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
 
-}
+  }
+
+  //unsubscribe
+  onDestroy(){
+    this.unsubscribe$.unsubscribe();
+  }
 
 }
